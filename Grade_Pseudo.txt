@@ -2,11 +2,13 @@
 // Date:    MM/DD/YYYY
 // Program: Grade_Pseudo.txt
 // Descr:
-// Definition of class GradedActivity.
+// Definition of superclass GradedActivity
+// and subclass FinalExam.
 
 // class to represent a general graded activity
 // consisting of a private score out of 100
 Class GradedActivity
+
 	// fields
 	Private Real score
 
@@ -36,3 +38,58 @@ Class GradedActivity
 	End Function
 	
 End Class
+
+
+// inherited class to represent a specific type of
+// graded activity, a FinalExam, that includes
+// additional fields for number of questions
+// and number of questions missed
+Class FinalExam Extends GradedActivity
+
+	// fields
+	Private Integer numQuestions
+	Private Real pointsEach
+	Private Integer numMissed
+	
+	// constructor
+	Public Module FinalExam(Integer questions, Integer missed)
+		Declare Real numericScore
+		Set numQuestions = questions
+		Set numMissed = missed
+		Set pointsEach = 100.0 / questions
+		Set numericScore = 100 – (missed * pointsEach)
+		Call setScore(numericScore)
+	End Module
+
+	// methods
+	Public Function Real getPointsEach()
+		Return pointsEach
+	End Function
+
+	Public Function Integer getNumMissed()
+		Return numMissed
+	End Function
+	
+End Class
+
+
+Module main()
+	Declare Integer questions, missed
+	Declare FinalExam exam
+
+	Display “Enter the number of questions
+	on the exam.”
+	Input questions
+
+	Display “Enter the number of questions
+	that the student missed.”
+	Input missed
+	
+	Set exam = new FinalExam(questions, missed)
+	
+	Display “Each question on the exam counts “, 
+	exam.getPointsEach(), “ points.”
+	
+	Display “The exam score is “, exam.getScore()
+	Display “The exam grade is “ , exam.getGrade()
+End Module

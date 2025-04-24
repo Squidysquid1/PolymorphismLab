@@ -7,10 +7,15 @@
 import Grade
 
 def main():
-    test = Grade.GradedActivity() # creating an object (aka instance)
-    testScore = float(input('Enter a numeric test score.'))
-    test.setScore(testScore) # use mutator to set private data
-    print('The grade for that test is', test.getGrade())
+    questions = int(input("Enter the number of questions on the exam: "))
+    missed = int(input("Enter the number of questions that the students missed: "))
+    
+    exam = Grade.FinalExam(questions, missed)
+
+    print(f"Each question on the exam counts {exam.getPointsEach()} points.")
+    print(f"The exam score is {exam.getScore()}")
+    print(f"The exam grade is {exam.getGrade()}")
+
     
 # start program
 main()
