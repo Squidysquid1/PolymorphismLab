@@ -4,13 +4,13 @@
 # Descr:
 # In class exercise to demonstrate use of GradedActivity class.
 
-import Grade
+from Grade import FinalExam
 
 def main():
     questions = int(input("Enter the number of questions on the exam: "))
     missed = int(input("Enter the number of questions that the students missed: "))
     
-    exam = Grade.FinalExam(questions, missed)
+    exam = FinalExam(questions, missed)
 
     print(f"Each question on the exam counts {exam.getPointsEach()} points.")
     print(f"The exam score is {exam.getScore()}")
